@@ -11,7 +11,7 @@ def circMomentInertia(d_maj):
 def writeCSV(data):
 
     pass
-``
+
 def extract(data):
     ''' Extract most information from .yml file '''
 
@@ -29,9 +29,11 @@ def extract(data):
 def centroidBC(data,bolts,forces,moments):
     ''' calculate forces and moments at bolting centroid '''
 
-    bc = pd.DataFrame({'moment':[moments.loc[:,col].sum() for col in ['mx','my','mz']],\
-    'force':[forces.loc[:,col].sum() for col in ['fx','fy','fz']]},index=['x','y','z']).astype(np.float64)
-    
+    # distance from centroid of bolting to force for all force
+
+    # bc = pd.DataFrame({'moment':[moments.loc[:,col].sum() for col in ['mx','my','mz']],\
+    # 'force':[forces.loc[:,col].sum() for col in ['fx','fy','fz']]},index=['x','y','z']).astype(np.float64)
+
     fastenerStress(data,bolts,bc)
 
 def fastenerStress(data,bolts,bc):
