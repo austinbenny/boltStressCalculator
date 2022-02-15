@@ -1,0 +1,56 @@
+frameOfReference:
+
+  patternCentroid:
+    location: [0,0,0]
+
+  CG:
+    location: [0,0,1]
+
+forces:
+
+  - force: 'Force1'
+    magnitude: [100,100,100]
+    location: [0,0,0]
+
+
+  - force: 'Force2'
+    magnitude: [100,100,100]
+    location: [0,0,0]
+
+moments:
+
+  - moment: 'Moment1'
+    magnitude: [100,200,300]
+    location: [0,0,0]
+
+  - moment: 'Moment2'
+    magnitude: [100,200,300]
+    location: [0,0,0]
+
+fasteners:
+
+  - bolt: 'bolt1'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    location: [1,1,0]
+
+  - bolt: 'bolt2'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    location: [1,-1,0]
+
+
+  - bolt: 'bolt3'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    location: [-1,-1,0]
+
+
+  - bolt: 'bolt4'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    location: [-1,1,0]

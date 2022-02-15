@@ -1,0 +1,68 @@
+frameOfReference:
+
+  patternCentroid:
+    coordinate_x: 0
+    coordinate_y: 0
+    coordinate_z: 0
+
+  CG:
+    coordinate_x: 0
+    coordinate_y: 0
+    coordinate_z: 1
+
+forces:
+
+  - force: 'Force1'
+    magnitude_x: 100
+    magnitude_y: 100
+    magnitude_z: 100
+    coordinate_x: 0
+    coordinate_y: 0
+    coordinate_z: 1
+
+  - force: 'Force2'
+    magnitude_x: 100
+    magnitude_y: 100
+    magnitude_z: 100
+    coordinate_x: 0
+    coordinate_y: 0
+    coordinate_z: 1
+
+moments:
+# there is only one moment per axis in the centroid of bolting pattern
+    magnitude_x: 100
+    magnitude_y: 200
+    magnitude_z: 300
+
+fasteners:
+
+  - bolt: 'bolt1'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    coordinate_x: 1
+    coordinate_y: 1
+
+  - bolt: 'bolt2'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    coordinate_x: 1
+    coordinate_y: -1
+
+  - bolt: 'bolt3'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    coordinate_x: -1
+    coordinate_y: -1
+
+  - bolt: 'bolt4'
+    major_diameter: 1
+    minor_diameter: 1
+    tpi: 14
+    coordinate_x: -1
+    coordinate_y: 1
+
+
+  
