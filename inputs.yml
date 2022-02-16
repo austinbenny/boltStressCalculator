@@ -10,15 +10,15 @@ forces:
 
   - force: 'Force1'
     magnitude: [100,100,100]
-    location: [0,0,0]
+    location: [1,0,0]
 
 
   - force: 'Force2'
     magnitude: [100,100,100]
-    location: [0,0,0]
+    location: [0,0,1]
 
 moments:
-
+# i think these can be thought of as couples
   - moment: 'Moment1'
     magnitude: [100,200,300]
     location: [0,0,0]
