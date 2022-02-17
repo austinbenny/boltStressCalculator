@@ -20,11 +20,7 @@ forces:
 moments:
 # i think these can be thought of as couples
   - moment: 'Moment1'
-    magnitude: [100,200,300]
-    location: [0,0,0]
-
-  - moment: 'Moment2'
-    magnitude: [100,200,300]
+    magnitude: [0,0,0]
     location: [0,0,0]
 
 fasteners:
@@ -33,12 +29,14 @@ fasteners:
     major_diameter: 1
     minor_diameter: 1
     tpi: 14
+    Sy: 30000
     location: [1,1,0]
 
   - bolt: 'bolt2'
     major_diameter: 1
     minor_diameter: 1
     tpi: 14
+    Sy: 30000
     location: [1,-1,0]
 
 
@@ -46,6 +44,7 @@ fasteners:
     major_diameter: 1
     minor_diameter: 1
     tpi: 14
+    Sy: 30000
     location: [-1,-1,0]
 
 
@@ -53,4 +52,5 @@ fasteners:
     major_diameter: 1
     minor_diameter: 1
     tpi: 14
+    Sy: 30000
     location: [-1,1,0]
