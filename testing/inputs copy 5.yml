@@ -1,13 +1,13 @@
 projectInformation:
 
-  output_dir: 'build'
-  project_name: 'some case'
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/testing/out'
+  project_name: 'case6'
 
 frameOfReference:
 
   patternCentroid:
     location: [0,0,0]
-
+`
   CG:
     location: [0,0,1]
 
