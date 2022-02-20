@@ -1,12 +1,17 @@
 projectInformation:
 
-  output_dir: 'build'
-  project_name: 'some case'
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/build'
+  project_name: 'case1'
+  output_format: 'html'                               # choose from 'html','csv'
+  open_on_completion: True                            # choose whether to see output file after completion
 
 frameOfReference:
 
   patternCentroid:
-    location: [0,0,0]
+    location: [0,0,0]                                 # the plane in the frame of reference that the 
+                                                      # bolting pattern is on. 2D. Ex. '110' means 
+                                                      # the xy plane, '011' means the yz plane
+    plane: 'xy'
 
   CG:
     location: [0,0,1]
@@ -15,12 +20,12 @@ forces:
 
   - force: 'Force1'
     magnitude: [100,100,100]
-    location: [1,0,0]
+    location: [1,0,1]
 
 
   - force: 'Force2'
     magnitude: [100,100,100]
-    location: [0,0,1]
+    location: [0,1,1]
 
 moments:
 # i think these can be thought of as couples

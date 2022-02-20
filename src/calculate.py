@@ -11,6 +11,16 @@ def circMomentInertia(d):
     R = d/2
     return np.pi*(R**4)/4
 
+def storeAttrs(results):
+
+    results.attrs['Ixx'] = results.attrs['Iyy'] = results.attrs['Ixy'] = 'in^4'
+    results.attrs['tensile area'] = results.attrs['shear area'] = 'in^2'
+    results.attrs['normal stress'] = results.attrs['shear stress'] = 'psi'
+    results.attrs['IR_normal'] = results.attrs['IR_shear'] = 'none'
+
+    return results
+
+
 def extract(data):
     ''' Extract most information from .yml file '''
 
@@ -23,7 +33,10 @@ def extract(data):
     moments = np.array([[moment['moment']] + moment['magnitude'] + moment['location'] for moment in data['moments']])
     moments = pd.DataFrame(moments[:,1:],columns=['mx','my','mz','x','y','z'],index=moments[:,0]).astype(float)
 
+    # factor in plane here
+
     bolts_struc = centroidBC(data,bolts,forces,moments)
+    bolts_struc = storeAttrs(bolts_struc)
     return bolts_struc
 
 def centroidBC(data,bolts,forces,moments):
@@ -77,8 +90,8 @@ def fastenerStress(bolts,bc,centroid):
         + (bc.loc['mag_y','forces']*(bolts.loc[:,'shear area']/bolts.loc[:,'shear area'].sum()) + torsion_y).to_numpy()**2)
     bolts['shear stress'] = bolts['shear force']/bolts['shear area']
 
-    bolts['IR_normal'] = bolts['normal stress']/bolts['Sy']
-    bolts['IR_shear'] = bolts['shear stress']/bolts['Sy']
+    bolts['IR_normal'] = abs(bolts['normal stress']/bolts['Sy'])
+    bolts['IR_shear'] = abs(bolts['shear stress']/bolts['Sy'])
 
     bolts_struc = bolts.loc[:,['Ixx','Iyy','Ixy','shear area','tensile area','normal stress','shear stress','IR_normal','IR_shear']]
 

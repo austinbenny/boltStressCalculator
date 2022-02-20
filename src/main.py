@@ -4,7 +4,10 @@
 '''
 
 # import python packages
+import subprocess
 import os
+import platform
+
 
 # import modules
 from src import inputs
@@ -23,4 +26,11 @@ def main(file_path):
     results = calculate.extract(data)
 
     # post process
-    post.output(results,data)
+    filepath = post.output(results,data)
+    if data['projectInformation']['open_on_completion']:
+        if platform.system() == 'Darwin':       # macOS
+            subprocess.call(('open', filepath))
+        elif platform.system() == 'Windows':    # Windows
+            os.startfile(filepath)
+        else:                                   # linux variants
+            subprocess.call(('xdg-open', filepath))
