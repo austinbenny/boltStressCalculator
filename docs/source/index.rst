@@ -13,6 +13,8 @@ This is a calculator that takes as input forces, moments/couples, bolt locations
    :maxdepth: 2
    :caption: Contents:
 
+.. automodule:: calculate
+.. autofunction:: extract
 
 
 Indices and tables
