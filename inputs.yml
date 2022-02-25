@@ -1,6 +1,6 @@
 projectInformation:
 
-  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/build'
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/out'
   project_name: 'case1'
   output_format: 'html'                               # choose from 'html','csv'
   open_on_completion: True                            # choose whether to see output file after completion

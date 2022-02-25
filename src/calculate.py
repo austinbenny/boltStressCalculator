@@ -22,7 +22,13 @@ def storeAttrs(results):
 
 
 def extract(data):
-    ''' Extract most information from .yml file '''
+    """This function extracts all the necessary data used from the inputs.yml file
+
+    :param data: full inputs.yml file
+    :type data: dict or pandas df
+    :return: df with structural characteristics
+    :rtype: pandas df
+    """
 
     bolts = np.array([[bolt['bolt'],bolt['major_diameter'],bolt['minor_diameter'],bolt['tpi'],bolt['Sy']] + bolt['location'] for bolt in data['fasteners']])
     bolts = pd.DataFrame(bolts[:,1:],columns=['d_maj','d_min','tpi','Sy','x','y','z',],index=bolts[:,0]).astype(np.float64)
@@ -36,8 +42,7 @@ def extract(data):
     # factor in plane here
 
     bolts_struc = centroidBC(data,bolts,forces,moments)
-    bolts_struc = storeAttrs(bolts_struc)
-    return bolts_struc
+    return storeAttrs(bolts_struc)
 
 def centroidBC(data,bolts,forces,moments):
     ''' calculate forces and moments at bolting centroid '''
@@ -55,8 +60,7 @@ def centroidBC(data,bolts,forces,moments):
         bc.loc[:,'moments'] += np.cross(r,f)
         bc.loc[:,'forces'] += f
     
-    bolts_struc = fastenerStress(bolts,bc,centroid)
-    return bolts_struc
+    return fastenerStress(bolts,bc,centroid)
 
 def fastenerStress(bolts,bc,centroid):
 
@@ -75,7 +79,7 @@ def fastenerStress(bolts,bc,centroid):
     bolts['Ixy'] = bolts['Ixx'] + bolts['Iyy']
 
     # find normal force
-    mom_term = ((bolts.loc[:,['dx','dy']].to_numpy()/bolts.loc[:,['Ixx','Iyy']]).dot(bc.loc[['mag_x','mag_y'],'moments'].to_numpy()[:,None])).to_numpy()
+    mom_term = (bolts.loc[:,['dx','dy']].to_numpy()/bolts.loc[:,['Ixx','Iyy']]) @ bc.loc[['mag_x','mag_y'],'moments'].to_numpy()[:,None]
     f_term = (np.repeat(bc.loc['mag_z','forces'],bolts.shape[0])*(bolts.loc[:,'tensile area'].sum()/bolts.loc[:,'tensile area'].to_numpy()))[:,None]
     bolts['normal force'] = mom_term + f_term
     bolts['normal stress'] = bolts['normal force']/bolts['tensile area']

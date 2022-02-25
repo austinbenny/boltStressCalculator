@@ -1,5 +1,6 @@
 import os
 from jinja2 import Template
+import matplotlib.pyplot as plt
 
 
 def htmlhead(title):
@@ -38,6 +39,9 @@ def writeCSV(results,output_path,f_name):
 
     return f_path
 
+def createPLOT():
+
+    pass
 
 def writeHTML(results,output_path,f_name):
 
@@ -69,7 +73,7 @@ def writeHTML(results,output_path,f_name):
                     html.write(f'        <td>{val[idx]:.3f}</td>\n')
         html.write('      </tr>\n')
         html.write('    </table>\n')
-        html.write(' This is some paragraph of information\n')
+        html.write('   <hr>')
         html.write('  </body>\n')
         html.write('</html>\n')
     
