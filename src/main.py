@@ -4,23 +4,33 @@
 '''
 
 # import python packages
+import subprocess
 import os
+import platform
+
 
 # import modules
-import inputs
-import calculate
-import post
+from src import inputs
+from src import calculate
+from src import post
 
-file_path = 'inputs.yml'
+def main(file_path):
 
-file = os.path.join(os.getcwd(),file_path)
-data = inputs.parseYML(file)
+    file = os.path.join(os.getcwd(),file_path)
+    data = inputs.parseYML(file)
 
-# preproces
-# clean up, check, and convert data here
+    # preproces
+    # clean up, check, and convert data here
 
-# pass data to other module to calculate
-results = calculate.extract(data)
+    # pass data to other module to calculate
+    results = calculate.extract(data)
 
-# post process
-post.output(results)
+    # post process
+    filepath = post.output(results,data)
+    if data['projectInformation']['open_on_completion']:
+        if platform.system() == 'Darwin':       # macOS
+            subprocess.call(('open', filepath))
+        elif platform.system() == 'Windows':    # Windows
+            os.startfile(filepath)
+        else:                                   # linux variants
+            subprocess.call(('xdg-open', filepath))
