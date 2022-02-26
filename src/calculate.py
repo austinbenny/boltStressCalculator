@@ -25,7 +25,7 @@ def extract(data):
     """This function extracts all the necessary data used from the inputs.yml file
 
     :param data: full inputs.yml file
-    :type data: dict or pandas df
+    :type data: dict
     :return: df with structural characteristics
     :rtype: pandas df
     """
