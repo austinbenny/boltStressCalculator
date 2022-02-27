@@ -1,0 +1,16 @@
+inputs.yml (or the inputs YAML file)
+====================================
+
+The `inputs.yml` file is created to be a user-friendly interface for the calculator.
+
+frameofReference
+----------------
+
+patternCentroid
+^^^^^^^^^^^^^^^
+
+Should include all the information for the centroid of the pattern. Should include the location of the centroid in format ``x,y,z`` in the cartesian coordinate system. User should also specify the plane on which the bolt bottom head surface is flush with.
+
+.. image:: figs/bolts_flush.svg
+    :scale: 100%
+

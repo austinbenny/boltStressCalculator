@@ -1,6 +1,7 @@
+
 projectInformation:
 
-  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/out'
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/testing/out'
   project_name: 'case1'
   output_format: 'html'                               # choose from 'html','csv'
   open_on_completion: True                            # choose whether to see output file after completion
@@ -13,19 +14,11 @@ frameOfReference:
                                                       # the xy plane, '011' means the yz plane
     plane: 'xy'
 
-  CG:
-    location: [0,0,1]
-
 forces:
 
   - force: 'Force1'
-    magnitude: [100,100,100]
-    location: [1,0,1]
-
-
-  - force: 'Force2'
-    magnitude: [100,100,100]
-    location: [0,1,1]
+    magnitude: [-42000,0,0]
+    location: [0,-.120,0]
 
 moments:
 # i think these can be thought of as couples
@@ -36,31 +29,30 @@ moments:
 fasteners:
 
   - bolt: 'bolt1'
-    major_diameter: 1
-    minor_diameter: 1
+    major_diameter: 0.025
+    minor_diameter: 0.025
     tpi: 14
-    Sy: 30000
-    location: [1,1,0]
+    Sy: 215000000
+    location: [-.105,0,0]
 
   - bolt: 'bolt2'
-    major_diameter: 1
-    minor_diameter: 1
+    major_diameter: 0.025
+    minor_diameter: 0.025
     tpi: 14
-    Sy: 30000
-    location: [1,-1,0]
+    Sy: 215000000
+    location: [-0.035,0,0]
 
 
   - bolt: 'bolt3'
-    major_diameter: 1
-    minor_diameter: 1
+    major_diameter: 0.025
+    minor_diameter: 0.025
     tpi: 14
-    Sy: 30000
-    location: [-1,-1,0]
-
+    Sy: 215000000
+    location: [0.035,0,0]
 
   - bolt: 'bolt4'
-    major_diameter: 1
-    minor_diameter: 1
+    major_diameter: 0.025
+    minor_diameter: 0.025
     tpi: 14
-    Sy: 30000
-    location: [-1,1,0]
+    Sy: 215000000
+    location: [.105,0,0]
