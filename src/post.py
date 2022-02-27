@@ -62,15 +62,15 @@ def writeHTML(results,output_path,f_name):
             html.write('      <tr>\n')
             html.write(f'        <td>{str(bolt)}</td>\n')
             for key,val in results.items():
-                if key == 'IR_shear' or key == 'IR_normal':
-                    if val[idx]  > 0.750:
+                if (key == 'IR_shear' or key == 'IR_normal'):
+                    if (val[idx]  > 0.750 and val[idx] < 1):
                         html.write(f'        <td bgcolor="yellow">{val[idx]:.3f}</td>\n')
                     if val[idx] > 1:
-                        html.write(f'        <td bgcolor="lightred">{val[idx]:.3f}</td>\n')
+                        html.write(f'        <td bgcolor="red">{val[idx]:.3f}</td>\n')
                     else:
                         html.write(f'        <td bgcolor="lightgreen">{val[idx]:.3f}</td>\n')
                 else:
-                    html.write(f'        <td>{val[idx]:.3f}</td>\n')
+                    html.write(f'        <td>{val[idx]:.3G}</td>\n')
         html.write('      </tr>\n')
         html.write('    </table>\n')
         html.write('   <hr>')

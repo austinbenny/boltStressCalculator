@@ -1,0 +1,61 @@
+# example 2: https://s3.amazonaws.com/suncam/docs/258.pdf
+# only has torsional momeny
+# bolting pattern is only along x
+
+projectInformation:
+
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/testing/out'
+  project_name: 'case1'
+  output_format: 'html'                               # choose from 'html','csv'
+  open_on_completion: True                            # choose whether to see output file after completion
+
+frameOfReference:
+
+  patternCentroid:
+    location: [0,0,0]                                 # the plane in the frame of reference that the 
+                                                      # bolting pattern is on. 2D. Ex. '110' means 
+                                                      # the xy plane, '011' means the yz plane
+    plane: 'xy'
+
+forces:
+
+  - force: 'Force1'
+    magnitude: [-42000,0,0]
+    location: [0,-.120,0]
+
+moments:
+# i think these can be thought of as couples
+  - moment: 'Moment1'
+    magnitude: [0,0,0]
+    location: [0,0,0]
+
+fasteners:
+
+  - bolt: 'bolt1'
+    major_diameter: 0.025
+    minor_diameter: 0.025
+    tpi: 14
+    Sy: 215000000
+    location: [-.105,0,0]
+
+  - bolt: 'bolt2'
+    major_diameter: 0.025
+    minor_diameter: 0.025
+    tpi: 14
+    Sy: 215000000
+    location: [-0.035,0,0]
+
+
+  - bolt: 'bolt3'
+    major_diameter: 0.025
+    minor_diameter: 0.025
+    tpi: 14
+    Sy: 215000000
+    location: [0.035,0,0]
+
+  - bolt: 'bolt4'
+    major_diameter: 0.025
+    minor_diameter: 0.025
+    tpi: 14
+    Sy: 215000000
+    location: [.105,0,0]

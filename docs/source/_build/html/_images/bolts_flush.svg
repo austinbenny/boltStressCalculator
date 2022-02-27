@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="145.40642mm"
+   height="53.43277mm"
+   viewBox="0 0 145.40642 53.43277"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
+   sodipodi:docname="bolts_flush.svg">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path931" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path934" />
+    </marker>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath897">
+      <rect
+         style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.578001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect899"
+         width="63.834309"
+         height="15.615047"
+         x="95.938835"
+         y="43.222446" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath901">
+      <rect
+         style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.578001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect903"
+         width="63.834309"
+         height="15.615047"
+         x="95.938835"
+         y="43.222446" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath915">
+      <rect
+         style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.578001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect917"
+         width="81.448082"
+         height="16.86425"
+         x="52.341633"
+         y="69.955406" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath919">
+      <rect
+         style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.578001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect921"
+         width="81.448082"
+         height="16.86425"
+         x="52.341633"
+         y="69.955406" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2404317"
+     inkscape:cx="323.77372"
+     inkscape:cy="102.04058"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1252"
+     inkscape:window-height="847"
+     inkscape:window-x="55"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-34.885369,-44.614882)">
+    <path
+       style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.182032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 62.23972,75.234272 -0.218422,8.25495 h 3.931581 v 14.528711 h 4.586844 V 83.159026 h 3.276317 v -8.254951 z"
+       id="path836"
+       clip-path="url(#clipPath919)" />
+    <path
+       style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.182032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 117.08747,74.882277 -0.21842,8.25495 h 3.93158 v 14.528711 h 4.58684 V 82.807032 h 3.27632 V 74.55208 Z"
+       id="path836-7"
+       clip-path="url(#clipPath915)" />
+    <path
+       id="rect10"
+       style="fill:none;stroke:#000000;stroke-width:0.578;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="M 44.505639,88.614512 138.17536,87.833823 179.55182,49.957607 95.640702,49.567263 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.182032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 145.63984,45.346535 -0.21842,8.25495 h 3.93158 v 14.528711 h 4.58684 V 53.27129 h 3.27632 v -8.254952 z"
+       id="path836-7-8"
+       clip-path="url(#clipPath901)" />
+    <path
+       style="fill:#b0b0b0;fill-opacity:1;stroke:#000000;stroke-width:0.182032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 99.994571,45.038728 -0.21842,8.25495 h 3.931579 v 14.528711 h 4.58684 V 52.963483 h 3.27631 v -8.254952 z"
+       id="path836-7-8-1"
+       clip-path="url(#clipPath897)" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       d="M 109.89802,91.840325 H 35.268942 L 84.363309,53.326641"
+       id="path923" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, Normal';stroke-width:0.264583"
+       x="76.604141"
+       y="98.047653"
+       id="text1265"><tspan
+         sodipodi:role="line"
+         id="tspan1263"
+         x="76.604141"
+         y="98.047653"
+         style="stroke-width:0.264583">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, Normal';stroke-width:0.264583"
+       x="57.417835"
+       y="67.293137"
+       id="text1269"><tspan
+         sodipodi:role="line"
+         id="tspan1267"
+         x="57.417835"
+         y="67.293137"
+         style="stroke-width:0.264583">y</tspan></text>
+  </g>
+</svg>

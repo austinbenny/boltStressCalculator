@@ -8,7 +8,9 @@ This is a calculator that takes as input forces, moments/couples, bolt locations
    :maxdepth: 2
    :caption: Contents:
    
+   inputs_file
    functions
+   theory
    includeme
 
 

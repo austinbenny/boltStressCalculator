@@ -1,5 +1,8 @@
-boltStressCalculator Functions
+Functions
 ==============================
+
 
 .. automodule:: calculate
       :members:
+
+
