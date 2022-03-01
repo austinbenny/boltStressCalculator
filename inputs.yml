@@ -1,17 +1,15 @@
 
 projectInformation:
 
-  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/testing/out'
+  output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/out'
   project_name: 'case1'
-  output_format: 'html'                               # choose from 'html','csv'
-  open_on_completion: True                            # choose whether to see output file after completion
+  output_format: 'html'                      
+  open_on_completion: False
 
 frameOfReference:
 
   patternCentroid:
-    location: [0,0,0]                                 # the plane in the frame of reference that the 
-                                                      # bolting pattern is on. 2D. Ex. '110' means 
-                                                      # the xy plane, '011' means the yz plane
+    location: [0,0,0]
     plane: 'xy'
 
 forces:
@@ -30,14 +28,12 @@ fasteners:
 
   - bolt: 'bolt1'
     major_diameter: 0.025
-    minor_diameter: 0.025
     tpi: 14
     Sy: 215000000
     location: [-.105,0,0]
 
   - bolt: 'bolt2'
     major_diameter: 0.025
-    minor_diameter: 0.025
     tpi: 14
     Sy: 215000000
     location: [-0.035,0,0]
@@ -45,14 +41,12 @@ fasteners:
 
   - bolt: 'bolt3'
     major_diameter: 0.025
-    minor_diameter: 0.025
     tpi: 14
     Sy: 215000000
     location: [0.035,0,0]
 
   - bolt: 'bolt4'
     major_diameter: 0.025
-    minor_diameter: 0.025
     tpi: 14
     Sy: 215000000
     location: [.105,0,0]

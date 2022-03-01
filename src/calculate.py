@@ -1,6 +1,8 @@
 import numpy as np 
 import pandas as pd
 
+coords = ['x','y','z']
+
 def tensileArea(d,tpi):
     return (np.pi/4)*(d - 0.9743/tpi)**2
 
@@ -23,9 +25,9 @@ def findCentroid(bolts):
     :rtype: pandas df
     """
 
-    bolts = True
-    return bolts
-
+    cg = [np.sum(bolts['tensile area']*bolts[c])/np.sum(bolts['tensile area']) for c in coords]
+    return pd.DataFrame(np.array(cg)[:,None].T,columns=['x','y','z'])
+     
 def extract(data):
     """This function extracts all the necessary data used from the inputs.yml file
 
@@ -35,8 +37,9 @@ def extract(data):
     :rtype: pandas df
     """
 
-    bolts = np.array([[bolt['bolt'],bolt['major_diameter'],bolt['minor_diameter'],bolt['tpi'],bolt['Sy']] + bolt['location'] for bolt in data['fasteners']])
-    bolts = pd.DataFrame(bolts[:,1:],columns=['d_maj','d_min','tpi','Sy','x','y','z',],index=bolts[:,0]).astype(float)
+    bolts = np.array([[bolt['bolt'],bolt['major_diameter'],bolt['tpi'],bolt['Sy']] + bolt['location'] for bolt in data['fasteners']])
+    bolts = pd.DataFrame(bolts[:,1:],columns=['d_maj','tpi','Sy','x','y','z'],index=bolts[:,0]).astype(float)
+    bolts['tensile area'] = list(map(tensileArea,bolts['d_maj'],bolts['tpi']))
 
     # get BC
     forces = np.array([[force['force']] + force['magnitude'] + force['location'] for force in data['forces']])
@@ -47,16 +50,8 @@ def extract(data):
     # factor in plane here
     plane = data['frameOfReference']['patternCentroid']['plane']
     a1,a2 = [char for char in plane]
-    a3 = [c for c in ['x','y','z'] if (c != a1 and c != a2)][0]
+    a3 = [c for c in coords if (c != a1 and c != a2)][0]
     axes = (a1,a2,a3)
-
-    # for i,c in enumerate(coords):
-    #     if len(set(bolts.loc[:,c])) == 1:
-    #         count += 1
-    #         a3 = c
-    #         coords.pop(i)
-    # a1,a2 = coords
-    # axes = (a1,a2,a3)
 
     return centroidBC(data,bolts,forces,moments,axes)
 
@@ -65,6 +60,8 @@ def centroidBC(data,bolts,forces,moments,axes):
 
     # distance from centroid of bolting to force for all force
     centroid = data['frameOfReference']['patternCentroid']['location']
+    cg = findCentroid(bolts)
+    
     forces['dx'] = forces['x'] - centroid[0]
     forces['dy'] = forces['y'] - centroid[1]
     forces['dz'] = forces['z'] - centroid[2]
@@ -81,7 +78,6 @@ def centroidBC(data,bolts,forces,moments,axes):
 def fastenerStress(bolts,bc,centroid,axes):
 
     # find tensile and shear area
-    bolts['tensile area'] = list(map(tensileArea,bolts['d_maj'],bolts['tpi']))
     totalTensileArea = bolts['tensile area'].sum()
 
     # find location and moment arms
@@ -120,6 +116,6 @@ def fastenerStress(bolts,bc,centroid,axes):
     bolts['IR_shear'] = abs(bolts['shear stress']/bolts['Sy'])
 
     bolts = storeAttrs(bolts)
+    bolts = bolts.fillna(0)
 
-    bolts_struc = bolts[[f'I{a1}{a1}',f'I{a2}{a2}',f'I{a1}{a2}','normal force','shear force','shear stress','IR_normal','IR_shear']]
-    return bolts_struc.fillna(0)
+    return bolts, axes

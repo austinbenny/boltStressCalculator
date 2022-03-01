@@ -17,17 +17,17 @@ from src import post
 def main(file_path):
 
     file = os.path.join(os.getcwd(),file_path)
-    data = inputs.parseYML(file)
+    case = inputs.parseYML(file)
 
     # preproces
-    # clean up, check, and convert data here
+    # clean up, check, and convert case here
 
-    # pass data to other module to calculate
-    results = calculate.extract(data)
+    # pass case to other module to calculate
+    bolts, axes = calculate.extract(case)
 
     # post process
-    filepath = post.output(results,data)
-    if data['projectInformation']['open_on_completion']:
+    filepath = post.output(bolts,axes,case)
+    if case['projectInformation']['open_on_completion']:
         if platform.system() == 'Darwin':       # macOS
             subprocess.call(('open', filepath))
         elif platform.system() == 'Windows':    # Windows
