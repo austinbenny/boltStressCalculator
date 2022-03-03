@@ -8,8 +8,6 @@ projectInformation:
 
 frameOfReference:
 
-  patternCentroid:
-    location: [0,0,0]
     plane: 'xy'
 
 forces:
@@ -17,12 +15,6 @@ forces:
   - force: 'Force1'
     magnitude: [-42000,0,0]
     location: [0,-.120,0]
-
-moments:
-# i think these can be thought of as couples
-  - moment: 'Moment1'
-    magnitude: [0,0,0]
-    location: [0,0,0]
 
 fasteners:
 
