@@ -35,42 +35,30 @@
             
   <section id="inputs-yml-or-the-inputs-yaml-file">
 <h1>inputs.yml (or the inputs YAML file)<a class="headerlink" href="#inputs-yml-or-the-inputs-yaml-file" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> file is created to be a user-friendly interface for the calculator.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> file is created to be a user-friendly interface for the calculator. This page describes the fields or keys required to make the input file for this calculator. An example inputs.yml file is provided in this directory. The name <code class="docutils literal notranslate"><span class="pre">`inputs.yml`</span></code> is the default name for the inputs file, but this file name can be changed to anything.</p>
 <section id="frameofreference">
 <h2>frameofReference<a class="headerlink" href="#frameofreference" title="Permalink to this headline">¶</a></h2>
-<section id="patterncentroid">
-<h3>patternCentroid<a class="headerlink" href="#patterncentroid" title="Permalink to this headline">¶</a></h3>
-<p>Should include all the information for the centroid of the pattern.</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">location</span></code></dt><dd><ul>
-<li><p><cite>type</cite>: list with format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
-<li><p><cite>description</cite>: Location of the centroid in the cartesian coordinate system.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">plane</span></code></dt><dd><ul>
 <li><p><cite>type</cite>: String. Options include any pair of <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>.</p></li>
-<li><p><cite>description</cite>: Plane on which the fastener bottom heads are flush with. For example, in the schematic below, said plane would the <code class="docutils literal notranslate"><span class="pre">xy</span></code>. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user’s input plane.</p></li>
+<li><p><cite>description</cite>: Plane on which the fastener bottom heads are flush with. For example, in the schematic below, said plane would the <code class="docutils literal notranslate"><span class="pre">xy</span></code>. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user’s input plane. <strong>Units</strong>: [inches]</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 <img alt="_images/bolts_flush.svg" src="_images/bolts_flush.svg" /></section>
-</section>
 <section id="forces">
 <h2>forces<a class="headerlink" href="#forces" title="Permalink to this headline">¶</a></h2>
 <section id="force1">
 <h3>force1<a class="headerlink" href="#force1" title="Permalink to this headline">¶</a></h3>
-<p>This object is a list element. To make more forces, repeat the fields and syntax found in this element.</p>
+<p><code class="docutils literal notranslate"><span class="pre">force1</span></code> is a list element. To make more forces, repeat the fields and syntax of this element.</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">force</span></code></dt><dd><ul>
 <li><p><cite>type</cite>: String</p></li>
-<li><p><cite>description</cite>: Name of force</p></li>
+<li><p><cite>description</cite>: Name of force.</p></li>
 </ul>
 </dd>
 </dl>
@@ -78,7 +66,7 @@
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">magnitude</span></code>:</dt><dd><ul>
 <li><p><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
-<li><p><cite>description</cite>: vector components of force</p></li>
+<li><p><cite>description</cite>: vector components of force. <strong>Units</strong>: [lbf]</p></li>
 </ul>
 </dd>
 </dl>
@@ -86,13 +74,101 @@
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">location</span></code>:</dt><dd><ul>
 <li><p><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
-<li><p><cite>description</cite>: Point location of force</p></li>
+<li><p><cite>description</cite>: Point location of force. <strong>Units</strong>: [inches]</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </section>
+</section>
+<section id="fasteners">
+<h2>fasteners<a class="headerlink" href="#fasteners" title="Permalink to this headline">¶</a></h2>
+<section id="fastener1">
+<h3>fastener1<a class="headerlink" href="#fastener1" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fastener1</span></code> is a list element. To make more fasteners, repeat the fields and syntax of this element.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bolt</span></code></dt><dd><ul>
+<li><p><cite>type</cite>: String</p></li>
+<li><p><cite>description</cite>: Name of fastener</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">major_diameter</span></code>:</dt><dd><ul>
+<li><p><cite>type</cite>: int, float</p></li>
+<li><p><cite>description</cite>: nominal or major diameter of fastener. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tpi</span></code>:</dt><dd><ul>
+<li><p><cite>type</cite>: int, float</p></li>
+<li><p><cite>description</cite>: threads-per-inch of fastener. <strong>Units</strong>: [Dimensionless]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Sy</span></code>:</dt><dd><ul>
+<li><p><cite>type</cite>: int, float</p></li>
+<li><p><cite>description</cite>: yield strength of bolt material. <strong>Units</strong>: [Psi]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">location</span></code>:</dt><dd><ul>
+<li><p><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
+<li><p><cite>description</cite>: location of fastener. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="example-inputs-yml-template">
+<h2>Example inputs.yml template<a class="headerlink" href="#example-inputs-yml-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectInformation</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/case/out&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">project_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;case1&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">output_format</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;html&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">open_on_completion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+
+<span class="nt">frameOfReference</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">plane</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;xy&#39;</span><span class="w"></span>
+
+<span class="nt">forces</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Force1&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">magnitude</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-400</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">-1.20</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Force2&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">magnitude</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-42000</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="nt">fasteners</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bolt</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1/4&quot;-14</span><span class="nv"> </span><span class="s">TPI</span><span class="nv"> </span><span class="s">bolt</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">edge&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">major_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tpi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Sy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-1.05</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bolt</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1/2&quot;-14</span><span class="nv"> </span><span class="s">TPI</span><span class="nv"> </span><span class="s">bolt</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">outside&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">major_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tpi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Sy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-0.035</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -118,10 +194,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">inputs.yml (or the inputs YAML file)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#frameofreference">frameofReference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#forces">forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fasteners">fasteners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-inputs-yml-template">Example inputs.yml template</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
 

@@ -88,6 +88,17 @@ def getColormap(maxIR):
     return ListedColormap(colorMap)
 
 def createPLOT(bolts,axes,output_path):
+    """Create 2x2 subplot of shear and normal stresses
+
+    :param bolts: df of bolts
+    :type bolts: pandas df
+    :param axes: axes according to user defined plane
+    :type axes: list
+    :param output_path: output path of picture
+    :type output_path: string
+    :return: absolute path to plot
+    :rtype: string
+    """
 
     a1,a2,_ = axes
     cg = calculate.findCentroid(bolts)
@@ -99,7 +110,6 @@ def createPLOT(bolts,axes,output_path):
         newcmp = getColormap(bolts[f'IR_{s_type}'].max())
         scatter_plot = ax[0].scatter(bolts[a1],bolts[a2],\
                     c = bolts[f'IR_{s_type}'],
-                    s = (bolts[a1].max()/bolts['d_maj'].max())*75,
                     cmap = newcmp,
                     label='Fastener')
         ax[0].scatter(cg[a1],cg[a2],\
@@ -118,10 +128,10 @@ def createPLOT(bolts,axes,output_path):
         # make bar
         ax[1].set_xticks(range(bolts.shape[0]), bolts.index.to_numpy())
         ax[1].bar(x = range(bolts.shape[0]),\
-                  height = bolts[f'{s_type} stress'],
+                  height = bolts[f'{s_type} stress'].abs(),
                   color = getBarColors(bolts,s_type))
         ax[1].set_title(f'{s_type} stress on fasteners',fontweight = 'bold')
-        ax[1].set_ylabel(f'{s_type} stress [psi]')
+        ax[1].set_ylabel(f'absolute {s_type} stress [psi]')
     plot_path = f'{output_path}/bolts_stress_plot.svg'
     fig.tight_layout()
     fig.savefig(plot_path,bbox_inches='tight')
@@ -147,14 +157,15 @@ def writeHTML(bolts,axes,output_path,f_name):
     maxNormName = bolts['normal stress'].idxmax()
     maxShearName = bolts['shear stress'].idxmax()
     lines = [f"The centroid of the pattern is at: {bolts.attrs['Centroid'][0]}",\
-             f"The fastener(s) with the largest normal stress is(are): [{maxNormName}] at [{bolts.loc[maxNormName,'normal stress']:.3G}] psi",
-             f"The fastener(s) with the largest shear stress is(are): [{maxShearName}] at [{bolts.loc[maxShearName,'shear stress']:.3G}] psi",
-             ]
+             f"The fastener(s) with the largest normal stress is(are): [{maxNormName}] at [{bolts.loc[maxNormName,'normal stress']:.3f}] psi",
+             f"The fastener(s) with the largest shear stress is(are): [{maxShearName}] at [{bolts.loc[maxShearName,'shear stress']:.3f}] psi"]
     f_name = f'{f_name}_structural_parameters.html'
     f_path = os.path.join(output_path,f_name)
     with open(f_path,'w+') as html:
         html.write(htmlhead(title))
         # Information line
+        html.write('<p> NOTE: The stress values in negative indicate that the fastener is in compression, while the positive values indicate the fastener is in tension. A green color indicates the IR is below 0.75, yellow indicates the IR is above 0.75 but below 1, and red indicates the IR is above 1. In some of the output (such as the sub plots), the aforementioned colors vary subtly (or along a gradient) depending on the corresponding IR value. For example, for a fastener with an IR of 0.4, the green will be a darker shade compared to an IR of 0.1.\n')
+        html.write('<hr>\n')
         html.write('    <table>\n')
         html.write('      <tr>\n')
         html.write(f'        <th>Fasteners</th>\n')
@@ -168,17 +179,16 @@ def writeHTML(bolts,axes,output_path,f_name):
                 if (key == 'IR_shear' or key == 'IR_normal'):
                     if (val[idx]  > 0.750 and val[idx] < 1):
                         html.write(f'        <td bgcolor="yellow">{val[idx]:.3f}</td>\n')
-                    if val[idx] > 1:
+                    elif val[idx] > 1:
                         html.write(f'        <td bgcolor="red">{val[idx]:.3f}</td>\n')
                     else:
                         html.write(f'        <td bgcolor="lightgreen">{val[idx]:.3f}</td>\n')
                 else:
-                    html.write(f'        <td>{val[idx]:.3G}</td>\n')
+                    html.write(f'        <td>{val[idx]:.3f}</td>\n')
         html.write('      </tr>\n')
         html.write('    </table>\n')
-        html.write('   <hr>\n')
+        # html.write('   <hr>\n')
         html.write('  </body>\n')
-        html.write('<p>The stress values in negative imply that the fastener is in compression while the positive values imply the fastener is in tension. A green color indicates the IR is below 0.75, yellow indicates the IR is above 0.75 but below 1, and red indicates the IR is above 1. In some of the output (such as the sub plots), the aforementioned colors vary subtly (or along a gradient) depending on the corresponding IR value. For example, for a fastener with an IR of 0.4, the green will be a darker shade.\n')
         html.write('<ul style=“list-style-type:circle>\n')
         for ln in lines:
             html.write(f'<li>{ln}</li>\n')

@@ -18,7 +18,7 @@ def storeAttrs(bolts):
     bolts.attrs['Ixx'] = bolts.attrs['Iyy'] = bolts.attrs['Ixy'] = 'in^4'
     bolts.attrs['tensile area'] = bolts.attrs['shear area'] = 'in^2'
     bolts.attrs['normal stress'] = bolts.attrs['shear stress'] = 'psi'
-    bolts.attrs['IR_normal'] = bolts.attrs['IR_shear'] = 'none'
+    bolts.attrs['IR_normal'] = bolts.attrs['IR_shear'] = 'Dimensionless'
     bolts.attrs['normal force'] = bolts.attrs['shear force'] = 'lbf'
     bolts.attrs['Centroid'] = findCentroid(bolts).to_numpy()
 
@@ -94,11 +94,9 @@ def fastenerStress(bolts,bc,centroid,axes):
     bolts[f'I{a1}{a2}'] = bolts[f'I{a1}{a1}'] + bolts[f'I{a2}{a2}']
 
     # find normal force
-    mom_term = (bolts[[f'd{a1}',f'd{a2}']].to_numpy()/bolts[[f'I{a1}{a1}',f'I{a2}{a2}']]) @ \
-                bc.loc[[f'mag_{a1}',f'mag_{a2}'],'moments'].to_numpy()[:,None]
-    f_term = (np.repeat(bc.loc[f'mag_{a3}','forces'],bolts.shape[0])*\
-             (totalTensileArea/bolts['tensile area'].to_numpy()))[:,None]
-    bolts['normal force'] = mom_term + f_term
+    bolts['normal force'] = (bc.loc[f'mag_{a1}','moments']*bolts[f'd{a2}']*bolts['tensile area'])/bolts[f'I{a1}{a1}']\
+                          + (bc.loc[f'mag_{a2}','moments']*bolts[f'd{a1}']*bolts['tensile area'])/bolts[f'I{a2}{a2}']\
+                          + (bc.loc[f'mag_{a3}','forces']*bolts['tensile area'])/totalTensileArea
     bolts['normal stress'] = bolts['normal force']/bolts['tensile area']
 
     # find shear force
