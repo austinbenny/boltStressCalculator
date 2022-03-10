@@ -17,12 +17,12 @@ from src import post
 def main(file_path):
 
     file = os.path.join(os.getcwd(),file_path)
-    cases = input.parseYML(file) # list of dicts
+    jobs = input.parseYML(file) # list of dicts
 
     # preproces
     # clean up, check, and convert case here
 
-    for case in cases:
+    for case in jobs:
         # pass case to other module to calculate
         bolts, axes = calculate.extract(case)
         # post process

@@ -1,16 +1,14 @@
 projectInformation:
 
   output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/out/queue'
-  project_name: 'josh_case'
-  output_format: 'html'                 
+  project_name: 'josh_case_q'
 
 files:
 
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
-  - 'inputs.yml'
+  - 'inputs1.yml'
+  - 'inputs2.yml'
+  - 'inputs3.yml'
+  - 'inputs4.yml'
+  - 'inputs5.yml'
+  - 'inputs6.yml'
+

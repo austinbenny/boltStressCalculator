@@ -40,9 +40,7 @@ def writeCSV(results,output_path,f_name):
     
     f_name = f'{f_name}_structural_parameters.csv'
     f_path = os.path.join(output_path,f_name)
-    results.to_csv(f_path,sep=',',float_format='%.3f',index_label='Bolts')
-
-    return f_path
+    results.to_csv(f_path,sep=',',float_format='%.3f',index_label='Fastener')
 
 def getBarColors(bolts,s_type):
     """Helper function to get colors for bar chart
@@ -167,10 +165,9 @@ def getResults(bolts,axes):
                     'IR_normal','IR_shear']]
     return results
 
-def writeHTML(bolts,axes,output_path,f_name):
+def writeHTML(bolts,axes,output_path,f_name,plot_path):
 
     results = getResults(bolts,axes)
-    plot_path = createPLOT(bolts,axes,output_path)
 
     title = f_name
     # bullet points
@@ -241,13 +238,11 @@ def output(bolts,axes,case):
         os.mkdir(output_path)
         output_path = os.path.join(os.getcwd(),output_path)
 
-    if case['projectInformation']['output_format'].lower() == 'html':
-        f_path = writeHTML(bolts,axes,output_path,f_name)
-    elif case['projectInformation']['output_format'].lower() == 'csv':
-        f_path = writeCSV(getResults(bolts,axes),output_path,f_name)
+    writeCSV(getResults(bolts,axes),output_path,f_name)
+    plot_path = createPLOT(bolts,axes,output_path)
+    f_path = writeHTML(bolts,axes,output_path,f_name,plot_path)
 
     return f_path
-
 
 if __name__ == "__main__":
 

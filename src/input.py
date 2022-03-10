@@ -1,10 +1,5 @@
 import yaml
 
-
-def run(path):
-
-    pass
-
 def loadYML(path):
 
     try:
@@ -18,7 +13,7 @@ def parseYML(path):
 
     data = loadYML(path)
     
-    if 'files' in data.keys():
+    if 'files' in data:
         queue = True
         if validateYML(data,queue):
             jobs = []
@@ -28,6 +23,7 @@ def parseYML(path):
                     jobs.append(data)
                 else:
                     raise Exception(f'check YML file {case}')
+            return jobs
         else:
             raise Exception('the queue file is broken')
     else:
