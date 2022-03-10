@@ -111,17 +111,37 @@ def createPLOT(bolts,axes,output_path):
         scatter_plot = ax[0].scatter(bolts[a1],bolts[a2],\
                     c = bolts[f'IR_{s_type}'],
                     cmap = newcmp,
+                    s = 5*72*bolts['d_maj'],
                     label='Fastener')
         ax[0].scatter(cg[a1],cg[a2],\
                     marker = 'D',
-                    alpha = 0.25,
+                    alpha = 0.5,
                     color = 'grey',
                     label = 'CG')
+        scl = 1.5
+        ax[0].set_xlim((scl*bolts[f'{a1}'].min(), scl*bolts[f'{a1}'].max()))
+        ax[0].set_ylim((scl*bolts[f'{a2}'].min(), scl*bolts[f'{a2}'].max()))
         ax[0].set_title(f'{s_type} stress IR on fasteners', fontweight = 'bold')
         ax[0].set_xlabel(f'${a1}$ [in]')
-        if idx == 0:
+        # annotate
+        annotate = False
+        if annotate:
+            for label,x,y in zip(bolts.index,bolts[a1],bolts[a2]):
+                ax[0].annotate(label, xy = (x, y), \
+                    xytext = (-15,15), 
+                    textcoords = 'offset points', 
+                    ha = 'center', 
+                    va = 'bottom',
+                    bbox = dict(boxstyle='round,pad=0.2', fc='grey', alpha=0.2))
+                    # arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.25', color='grey'))
+        if idx != 0:
             ax[0].set_ylabel(f'${a2}$ [in]')
-            ax[0].legend(loc = 'best')
+            # ax[0].legend(loc = 'best', \
+            #     title = 'Legend',
+            #     fancybox = True, 
+            #     title_fontproperties = {'weight':'bold'},
+            #     bbox_to_anchor=(0.5, -0.05),
+            #     ncol = 2)
         fig.colorbar(scatter_plot, ax = ax[0], label = 'IR')
         ax[0].grid(linestyle='dashed')
         ax[0].set_xlim([1.25*bolts[a1].min(),1.25*bolts[a1].max()])
@@ -164,7 +184,7 @@ def writeHTML(bolts,axes,output_path,f_name):
     with open(f_path,'w+') as html:
         html.write(htmlhead(title))
         # Information line
-        html.write('<p> NOTE: The stress values in negative indicate that the fastener is in compression, while the positive values indicate the fastener is in tension. A green color indicates the IR is below 0.75, yellow indicates the IR is above 0.75 but below 1, and red indicates the IR is above 1. In some of the output (such as the sub plots), the aforementioned colors vary subtly (or along a gradient) depending on the corresponding IR value. For example, for a fastener with an IR of 0.4, the green will be a darker shade compared to an IR of 0.1.\n')
+        html.write('<p style="color:grey;"> NOTE: The stress values in negative indicate that the fastener is in compression, while the positive values indicate the fastener is in tension. A green color indicates the IR is below 0.75, yellow indicates the IR is above 0.75 but below 1, and red indicates the IR is above 1. In some of the output (such as the sub plots), the aforementioned colors vary subtly (or along a gradient) depending on the corresponding IR value. For example, for a fastener with an IR of 0.4, the green will be a darker shade compared to an IR of 0.1. The location of the CG is displayed by grey diamond marker in the scatter plots.\n')
         html.write('<hr>\n')
         html.write('    <table>\n')
         html.write('      <tr>\n')
@@ -187,7 +207,6 @@ def writeHTML(bolts,axes,output_path,f_name):
                     html.write(f'        <td>{val[idx]:.3f}</td>\n')
         html.write('      </tr>\n')
         html.write('    </table>\n')
-        # html.write('   <hr>\n')
         html.write('  </body>\n')
         html.write('<ul style=“list-style-type:circle>\n')
         for ln in lines:
@@ -195,6 +214,14 @@ def writeHTML(bolts,axes,output_path,f_name):
         html.write('</ul>\n')
         html.write('<p>The plots below are generated from the results.\n')
         html.write(f'<img src="{plot_path}" alt="Stress Plots">\n')
+        html.write('<hr>\n')
+        # write the things for reproducibility
+        # change font to courier
+        # system info
+        # python version
+        # python package version
+        # runtime, run date and time
+        # path to input file (print entire input file)
         html.write('</html>\n')
     
     return f_path
