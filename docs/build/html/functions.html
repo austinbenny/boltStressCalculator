@@ -33,11 +33,13 @@
 
           <div class="body" role="main">
             
-  <section id="module-calculate">
-<span id="functions"></span><h1>Functions<a class="headerlink" href="#module-calculate" title="Permalink to this headline">¶</a></h1>
+  <section id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<section id="module-calculate">
+<span id="calculate-py"></span><h2>calculate.py<a class="headerlink" href="#module-calculate" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="calculate.centroidBC">
-<span class="sig-prename descclassname"><span class="pre">calculate.</span></span><span class="sig-name descname"><span class="pre">centroidBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calculate.centroidBC" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">calculate.</span></span><span class="sig-name descname"><span class="pre">centroidBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calculate.centroidBC" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate forces and moments at bolting centroid</p>
 </dd></dl>
 
@@ -75,6 +77,79 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="calculate.planeCheck">
+<span class="sig-prename descclassname"><span class="pre">calculate.</span></span><span class="sig-name descname"><span class="pre">planeCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plane</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calculate.planeCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function checks if 2D plane value in inputs.yml makes sense</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bolts</strong> (<em>pandas df</em>) – bolts data</p></li>
+<li><p><strong>plane</strong> (<em>string</em>) – plane</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if error check passes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calculate.storeAttrs">
+<span class="sig-prename descclassname"><span class="pre">calculate.</span></span><span class="sig-name descname"><span class="pre">storeAttrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calculate.storeAttrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function stores the attributes in the pandas df</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bolts</strong> (<em>pandas df</em>) – bolts dataframe</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df with stored attributes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas df</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-post">
+<span id="post-py"></span><h2>post.py<a class="headerlink" href="#module-post" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="post.createPLOT">
+<span class="sig-prename descclassname"><span class="pre">post.</span></span><span class="sig-name descname"><span class="pre">createPLOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#post.createPLOT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create 2x2 subplot of shear and normal stresses</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bolts</strong> (<em>pandas df</em>) – df of bolts</p></li>
+<li><p><strong>axes</strong> (<em>list</em>) – axes according to user defined plane</p></li>
+<li><p><strong>output_path</strong> (<em>string</em>) – output path of picture</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>absolute path to plot</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="post.getBarColors">
+<span class="sig-prename descclassname"><span class="pre">post.</span></span><span class="sig-name descname"><span class="pre">getBarColors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#post.getBarColors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to get colors for bar chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bolts</strong> (<em>pandas df</em>) – properties of bolts</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
 
@@ -97,8 +172,13 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="inputs_file.html">inputs.yml (or the inputs YAML file)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-calculate">calculate.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post">post.py</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
 

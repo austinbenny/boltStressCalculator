@@ -1,5 +1,10 @@
 Theory
-==============================
+=======
+
+Methodology
+-----------
+
+Uses the theory presented in AISC Steel Construction Manual. 
 
 Choice of area 
 --------------

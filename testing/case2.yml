@@ -3,11 +3,12 @@ projectInformation:
 
   output_dir: '/Users/austinbenny/Desktop/work/boltStressCalculator/out'
   project_name: 'josh_case'
+  output_format: 'html'                      
   open_on_completion: True
 
 frameOfReference:
 
-    plane: 'xz'
+    plane: 'xy'
 
 forces:
 

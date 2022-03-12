@@ -1,0 +1,9 @@
+name: boltStressCalculator
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - matplotlib
+  - os
+  - yaml
+

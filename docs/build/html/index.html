@@ -35,22 +35,37 @@
   <section id="boltstresscalculator-documentation">
 <h1>boltStressCalculator Documentation<a class="headerlink" href="#boltstresscalculator-documentation" title="Permalink to this headline">¶</a></h1>
 <p>This is a calculator that takes as input forces, moments/couples, bolt locations from the user and outputs the stress, IR and other structural parameters for each bolt. The value add from a calculator like this is the end user has free rein on the type of bolting pattern to be analyzed as long as the centroid of the bolting pattern is specified. You could imagine analyst A attempting to find the IR on a 4 bolt pattern which could take about 2 hours or use this calculator and get reliable results in 5 minutes. The calculator also has an HTML interface for users to provide inputs. The outputs are written to either a csv file, a .tex file, or an HTML file.</p>
+<section id="value-add-features">
+<h2>Value-Add &amp; Features<a class="headerlink" href="#value-add-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Can define location of bolts from origin of choosing</p></li>
+<li><p>Automatically calculates centroid of bolting pattern</p></li>
+<li><p>Can give force vectors anywhere (doesn’t have to be at the centroid)</p></li>
+<li><p>Automatically recognizes the plane for a 2D bolting pattern</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="inputs_file.html">inputs.yml (or the inputs YAML file)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inputs_file.html#frameofreference">frameofReference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inputs_file.html#forces">forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs_file.html#single-fastener-group-analysis-input-file">Single Fastener Group Analysis Input File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs_file.html#multiple-fastener-group-analysis-input-file">Multiple Fastener Group Analysis Input File</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#module-calculate">calculate.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html#module-post">post.py</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#methodology">Methodology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory.html#choice-of-area">Choice of area</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
 </div>
+</section>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -83,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="inputs_file.html">inputs.yml (or the inputs YAML file)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
 
