@@ -26,7 +26,7 @@ def main(file_path):
         # pass case to other module to calculate
         bolts, axes = calculate.extract(case)
         # post process
-        filepath = post.output(bolts,axes,case)
+        filepath = post.run(bolts,axes,case)
         try:
             if case['projectInformation']['open_on_completion']:
                 if platform.system() == 'Darwin':       # macOS

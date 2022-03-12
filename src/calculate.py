@@ -6,7 +6,7 @@ coords = ['x','y','z']
 def tensileArea(d,tpi):
     return (np.pi/4)*(d - 0.9743/tpi)**2
 
-def storeAttrs(bolts):
+def storeAttrs(bolts,axes):
     """Function stores the attributes in the pandas df
 
     :param bolts: bolts dataframe
@@ -15,7 +15,8 @@ def storeAttrs(bolts):
     :rtype: pandas df
     """
 
-    bolts.attrs['Ixx'] = bolts.attrs['Iyy'] = bolts.attrs['Ixy'] = 'in^4'
+    a1, a2, a3 = axes
+    bolts.attrs[f'I{a1}{a1}'] = bolts.attrs[f'I{a2}{a2}'] = bolts.attrs[f'I{a1}{a2}'] = 'in^4'
     bolts.attrs['tensile area'] = bolts.attrs['shear area'] = 'in^2'
     bolts.attrs['normal stress'] = bolts.attrs['shear stress'] = 'psi'
     bolts.attrs['IR_normal'] = bolts.attrs['IR_shear'] = 'Dimensionless'
@@ -34,9 +35,35 @@ def findCentroid(bolts):
     """
 
     cg = [np.sum(bolts['tensile area']*bolts[c])/np.sum(bolts['tensile area']) for c in coords]
-    return pd.DataFrame(np.array(cg)[:,None].T,columns=['x','y','z'])
+    return pd.DataFrame(np.array(cg)[:,None].T,columns=coords)
 
-     
+def planeCheck(bolts,plane):
+    """Function checks if 2D plane value in inputs.yml makes sense
+
+    :param bolts: bolts data
+    :type bolts: pandas df
+    :param plane: plane
+    :type plane: string
+    :return: True if error check passes
+    :rtype: Boolean
+    """
+
+    # make sure it is a 2D bolting pattern 
+    count = 0
+    for a in coords:
+        if len(set(bolts[a])) < 2:
+            count += 1
+
+    if count < 2:
+        for a in coords:
+            if len(set(bolts[a])) == 1:
+                noPlane = a
+
+    if noPlane in plane:
+        return False
+
+    return True
+
 def extract(data):
     """This function extracts all the necessary data used from the inputs.yml file
 
@@ -59,6 +86,10 @@ def extract(data):
     a1,a2 = [char for char in plane]
     a3 = [c for c in coords if (c != a1 and c != a2)][0]
     axes = (a1,a2,a3)
+
+    # error check the plane
+    if not planeCheck(bolts,plane):
+        raise Exception('Check plane input in inputs.yml. You have specified plane {plane} but the bolt coordinates do not suggest specified plane.')
 
     return centroidBC(bolts,forces,axes)
 
@@ -115,7 +146,7 @@ def fastenerStress(bolts,bc,centroid,axes):
     bolts['IR_normal'] = abs(bolts['normal stress']/bolts['Sy'])
     bolts['IR_shear'] = abs(bolts['shear stress']/bolts['Sy'])
 
-    bolts = storeAttrs(bolts)
+    bolts = storeAttrs(bolts,axes)
     bolts = bolts.fillna(0)
 
     return bolts, axes

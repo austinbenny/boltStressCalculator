@@ -7,7 +7,7 @@ projectInformation:
 
 frameOfReference:
 
-    plane: 'xy'
+    plane: 'xz'
 
 forces:
 

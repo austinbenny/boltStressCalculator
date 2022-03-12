@@ -5,8 +5,10 @@ import numpy as np
 
 try:
     import calculate
+    import utilFuncs
 except:
     from src import calculate
+    from src import utilFuncs
 
 def htmlhead(title):
 
@@ -132,7 +134,7 @@ def createPLOT(bolts,axes,output_path):
                     va = 'bottom',
                     bbox = dict(boxstyle='round,pad=0.2', fc='grey', alpha=0.2))
                     # arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.25', color='grey'))
-        if idx != 0:
+        if idx == 0:
             ax[0].set_ylabel(f'${a2}$ [in]')
             # ax[0].legend(loc = 'best', \
             #     title = 'Legend',
@@ -165,7 +167,7 @@ def getResults(bolts,axes):
                     'IR_normal','IR_shear']]
     return results
 
-def writeHTML(bolts,axes,output_path,f_name,plot_path):
+def writeHTML(bolts,axes,output_path,f_name,plot_path,inp_f):
 
     results = getResults(bolts,axes)
 
@@ -212,86 +214,26 @@ def writeHTML(bolts,axes,output_path,f_name,plot_path):
         html.write('<p>The plots below are generated from the results.\n')
         html.write(f'<img src="{plot_path}" alt="Stress Plots">\n')
         html.write('<hr>\n')
-        # write the things for reproducibility
-        # change font to courier
-        # system info
-        # python version
-        # python package version
-        # runtime, run date and time
-        # path to input file (print entire input file)
+        html.write(f'<p style="font-family:"Courier New"">{utilFuncs.getSysInfo() + utilFuncs.getVersions()}</p>\n')
+        html.write('<hr>\n')
+        # html.write('<p> The corresponding input file is: </p>\n')
+        # html.write(f'<p style="font-family:"Courier New"">{inp_f}</p>')
         html.write('</html>\n')
     
     return f_path
 
 
-def output(bolts,axes,case):
+def run(bolts,axes,case):
 
-    output_path = case['projectInformation']['output_dir']
-    f_name = case['projectInformation']['project_name']
-    output_path = os.path.join(output_path,f_name)
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-
-    if os.path.exists(output_path):
-        output_path = os.path.join(os.getcwd(),output_path)
-    else:
-        os.mkdir(output_path)
-        output_path = os.path.join(os.getcwd(),output_path)
+    output_path, f_name = utilFuncs.createOutDirs(case)
+    inp_f = utilFuncs.getInpFile(case, output_path)
 
     writeCSV(getResults(bolts,axes),output_path,f_name)
     plot_path = createPLOT(bolts,axes,output_path)
-    f_path = writeHTML(bolts,axes,output_path,f_name,plot_path)
+    f_path = writeHTML(bolts,axes,output_path,f_name,plot_path,inp_f)
 
     return f_path
 
 if __name__ == "__main__":
 
     print(getColormap(0.5))
-
-
-html_template = '''
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ title }} Results</title>
-    <style>
-    table,
-    h1,
-    th,
-    td {
-        padding: 10px;
-        border: 1px solid black;
-        border-collapse: collapse;
-        text-align: left;
-    }
-    h1 {
-        border: 3px double #1c87c9;
-        background-color: #d9d9d9;
-    }
-    </style>
-  </head>
-  <body>
-    <h1>{{ title }} Results</h2>
-    <table>
-      <tr>
-        <th>Fasteners</th>
-        <th>Ixx [in^4]</th>
-        <th>Iyy [in^4]</th>
-        <th>Ixy [in^4]</th>
-        <th>shear area [in^2]</th>
-        <th>tensile area [in^2]</th>
-        <th>normal stress [psi]</th>
-        <th>shear stress [psi]</th>
-        <th>IR_normal [none]</th>
-        <th>IR_shear [none]</th>
-      </tr>
-      <tr>
-        <td>bolt1</td>
-        <td>0.196</td>
-      </tr>
-    </table>
-  </body>
-</html>
-
-'''
-

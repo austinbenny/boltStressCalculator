@@ -45,7 +45,7 @@
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">output_dir</span></code></dt><dd><ul>
 <li><p><cite>type</cite>: String.</p></li>
-<li><p><cite>description</cite>: Output directory for the results. Results include a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file that contains the resulting structural parameters, an <code class="docutils literal notranslate"><span class="pre">.svg</span></code> figure of the bolts, and an <code class="docutils literal notranslate"><span class="pre">.html</span></code> file presenting the results.</p></li>
+<li><p><cite>description</cite>: Output directory for the results. Results include a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file that contains the resulting structural parameters, an <code class="docutils literal notranslate"><span class="pre">.svg</span></code> figure of the bolts, and a <code class="docutils literal notranslate"><span class="pre">.html</span></code> file presenting the results.</p></li>
 </ul>
 </dd>
 </dl>
@@ -75,7 +75,7 @@
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">plane</span></code></dt><dd><ul>
 <li><p><cite>type</cite>: String. Options include any pair of <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>.</p></li>
-<li><p><cite>description</cite>: Plane on which the fastener bottom heads are flush with. For example, in the schematic below, said plane would the <code class="docutils literal notranslate"><span class="pre">xy</span></code>. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user’s input plane. <strong>Units</strong>: [inches]</p></li>
+<li><p><cite>description</cite>: Plane on which the fastener bottom heads are flush with. <strong>The first character should be the axis in the longitudinal (right-left) direction, and the second should be the axis in the latitudinal (up-down) direction.</strong> For example, in the schematic below, said plane would the <code class="docutils literal notranslate"><span class="pre">xy</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code> is in the longitudinal direction and <code class="docutils literal notranslate"><span class="pre">y</span></code> is the latitudinal axis. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user’s input plane. <strong>Units</strong>: [inches]</p></li>
 </ul>
 </dd>
 </dl>
@@ -166,7 +166,7 @@
 </section>
 <section id="single-fastener-group-analysis-inputs-file-example">
 <h3>Single Fastener Group Analysis Inputs File Example<a class="headerlink" href="#single-fastener-group-analysis-inputs-file-example" title="Permalink to this headline">¶</a></h3>
-<p id="single">The name <code class="docutils literal notranslate"><span class="pre">`inputs.yml`</span></code> is the default name for the inputs file, but this file name can be changed to anything. The <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> file should be in the same directory as the <code class="docutils literal notranslate"><span class="pre">run.py</span></code>.</p>
+<p id="single">The name <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> is the default name for the inputs file, but this file name can be changed to anything. The <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> file should be in the same directory as the <code class="docutils literal notranslate"><span class="pre">run.py</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectInformation</span><span class="p">:</span><span class="w"></span>
 
 <span class="w">  </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/case/out&#39;</span><span class="w"></span>
@@ -225,15 +225,6 @@
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">open_on_completion</span></code></dt><dd><ul>
-<li><p><em>This option is only available for a single bolting group study.</em></p></li>
-<li><p><cite>type</cite>: Boolean.</p></li>
-<li><p><cite>description</cite>: Options include “True” or “False”. If “True”, the <code class="docutils literal notranslate"><span class="pre">.html</span></code> file will be opened on completion.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
 </ul>
 </section>
 <section id="files">
@@ -245,7 +236,7 @@
 </section>
 <section id="multiple-fastener-group-analysis-input-file-example">
 <h3>Multiple Fastener Group Analysis Input File Example<a class="headerlink" href="#multiple-fastener-group-analysis-input-file-example" title="Permalink to this headline">¶</a></h3>
-<p id="multiple">The name <code class="docutils literal notranslate"><span class="pre">`inputs_queue.yml`</span></code> is the default name for the inputs file, but this file name can be changed to anything. All absolute path to the inputs files must be specified.</p>
+<p id="multiple">The name <code class="docutils literal notranslate"><span class="pre">inputs_queue.yml</span></code> is the default name for the inputs file, but this file name can be changed to anything. All absolute path to the inputs files must be specified.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectInformation</span><span class="p">:</span><span class="w"></span>
 
 <span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/case/out/queue&#39;</span><span class="w"></span>

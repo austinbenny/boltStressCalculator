@@ -13,7 +13,7 @@ projectInformation
 
 * ``output_dir``
     * `type`: String. 
-    * `description`: Output directory for the results. Results include a ``.csv`` file that contains the resulting structural parameters, an ``.svg`` figure of the bolts, and an ``.html`` file presenting the results.
+    * `description`: Output directory for the results. Results include a ``.csv`` file that contains the resulting structural parameters, an ``.svg`` figure of the bolts, and a ``.html`` file presenting the results.
 * ``project_name``
     * `type`: String. 
     * `description`: The name of the case(s)
@@ -28,7 +28,7 @@ frameofReference
 
 * ``plane``
     * `type`: String. Options include any pair of ``x``, ``y``, and ``z``. 
-    * `description`: Plane on which the fastener bottom heads are flush with. For example, in the schematic below, said plane would the ``xy``. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user's input plane. **Units**: [inches]
+    * `description`: Plane on which the fastener bottom heads are flush with. **The first character should be the axis in the longitudinal (right-left) direction, and the second should be the axis in the latitudinal (up-down) direction.** For example, in the schematic below, said plane would the ``xy``, ``x`` is in the longitudinal direction and ``y`` is the latitudinal axis. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user's input plane. **Units**: [inches]
 
 .. image:: figs/bolts_flush.svg
 
@@ -74,10 +74,9 @@ fastener1
 
 Single Fastener Group Analysis Inputs File Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. _single:
 
-The name ```inputs.yml``` is the default name for the inputs file, but this file name can be changed to anything. The ``inputs.yml`` file should be in the same directory as the ``run.py``.
+The name ``inputs.yml`` is the default name for the inputs file, but this file name can be changed to anything. The ``inputs.yml`` file should be in the same directory as the ``run.py``.
 
 .. code-block:: yaml 
 
@@ -127,10 +126,6 @@ projectInformation
 * ``project_name``
     * `type`: String. 
     * `description`: The name of the case(s)
-* ``open_on_completion``
-    * *This option is only available for a single bolting group study.*
-    * `type`: Boolean. 
-    * `description`: Options include "True" or "False". If "True", the ``.html`` file will be opened on completion.
 
 files
 ^^^^^^
@@ -141,10 +136,9 @@ files
 
 Multiple Fastener Group Analysis Input File Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. _multiple:
 
-The name ```inputs_queue.yml``` is the default name for the inputs file, but this file name can be changed to anything. All absolute path to the inputs files must be specified.
+The name ``inputs_queue.yml`` is the default name for the inputs file, but this file name can be changed to anything. All absolute path to the inputs files must be specified.
 
 
 .. code-block:: yaml 

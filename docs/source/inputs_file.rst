@@ -13,7 +13,7 @@ projectInformation
 
 * ``output_dir``
     * `type`: String. 
-    * `description`: Output directory for the results. Results include a ``.csv`` file that contains the resulting structural parameters, an ``.svg`` figure of the bolts, and an ``.html`` file presenting the results.
+    * `description`: Output directory for the results. Results include a ``.csv`` file that contains the resulting structural parameters, an ``.svg`` figure of the bolts, and a ``.html`` file presenting the results.
 * ``project_name``
     * `type`: String. 
     * `description`: The name of the case(s)
@@ -28,7 +28,7 @@ frameofReference
 
 * ``plane``
     * `type`: String. Options include any pair of ``x``, ``y``, and ``z``. 
-    * `description`: Plane on which the fastener bottom heads are flush with. For example, in the schematic below, said plane would the ``xy``. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user's input plane. **Units**: [inches]
+    * `description`: Plane on which the fastener bottom heads are flush with. **The first character should be the axis in the longitudinal (right-left) direction, and the second should be the axis in the latitudinal (up-down) direction.** For example, in the schematic below, said plane would the ``xy``, ``x`` is in the longitudinal direction and ``y`` is the latitudinal axis. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user's input plane. **Units**: [inches]
 
 .. image:: figs/bolts_flush.svg
 
