@@ -1,5 +1,5 @@
 boltStressCalculator
-=====================
+====================
 
 https://austinbenny.github.io/boltStressCalculator/build/html/index.html
 
