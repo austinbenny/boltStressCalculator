@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Functions &#8212; boltStressCalculator v1.0.0 documentation</title>
+    <title>Theory &#8212; boltStressCalculator v1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -14,10 +14,11 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theory" href="theory.html" />
-    <link rel="prev" title="inputs.yml (or the inputs YAML file)" href="inputs_file.html" />
+    <link rel="next" title="Features for the future" href="todo.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -34,13 +35,19 @@
 
           <div class="body" role="main">
             
-  <section id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h1>
-<section id="calculate-py">
-<h2>calculate.py<a class="headerlink" href="#calculate-py" title="Permalink to this heading">¶</a></h2>
+  <section id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this heading">¶</a></h1>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">¶</a></h2>
+<p class="linemarker linemarker-7">Uses the theory presented in AISC Steel Construction Manual.</p>
 </section>
-<section id="post-py">
-<h2>post.py<a class="headerlink" href="#post-py" title="Permalink to this heading">¶</a></h2>
+<section id="choice-of-area">
+<h2>Choice of area<a class="headerlink" href="#choice-of-area" title="Permalink to this heading">¶</a></h2>
+<p class="linemarker linemarker-12">This calculator uses the tensile stress area of the bolts given by equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{\pi}{4} \left( d_{nom} - \frac{0.9743}{TPI} \right)\]</div>
+<p class="linemarker linemarker-17">as the preferred area when an area is required. Some manuals also use the “regular” cross-sectional area of the circle in place of the tensile area. In reality, this difference in selected area is only important when computing the tensile and shear stress. The approach taken here is to assume the end-user has knowledge on the characteristics of the fastener; thereby, feeding the calculator more information to make a more accurate solution.</p>
+<p class="linemarker linemarker-19">Another important note is that the bolt tensile area is used to compute the shear and tensile stresses. This implies that the shear plane of the fastener is always at the threads. If this is not the case in the particular use case, the shear stress and IR shear do not apply; the end-user must ensure that the shear force from the results is divided by the appropriate area.</p>
 </section>
 </section>
 
@@ -64,12 +71,12 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="inputs_file.html">inputs.yml (or the inputs YAML file)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#calculate-py">calculate.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#post-py">post.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methodology">Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choice-of-area">Choice of area</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
@@ -78,8 +85,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="inputs_file.html" title="previous chapter">inputs.yml (or the inputs YAML file)</a></li>
-      <li>Next: <a href="theory.html" title="next chapter">Theory</a></li>
+      <li>Previous: <a href="functions.html" title="previous chapter">Functions</a></li>
+      <li>Next: <a href="todo.html" title="next chapter">Features for the future</a></li>
   </ul></li>
 </ul>
 </div>
@@ -113,7 +120,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="_sources/functions.rst.txt"
+      <a href="_sources/theory.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

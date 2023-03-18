@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>inputs.yml (or the inputs YAML file) &#8212; boltStressCalculator v1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,9 +12,12 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="boltStressCalculator Documentation" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,14 +35,224 @@
           <div class="body" role="main">
             
   <section id="inputs-yml-or-the-inputs-yaml-file">
-<h1>inputs.yml (or the inputs YAML file)<a class="headerlink" href="#inputs-yml-or-the-inputs-yaml-file" title="Permalink to this headline">¶</a></h1>
-<p>The <cite>inputs.yml</cite> file is created to be a user-friendly interface for the calculator.</p>
+<h1>inputs.yml (or the inputs YAML file)<a class="headerlink" href="#inputs-yml-or-the-inputs-yaml-file" title="Permalink to this heading">¶</a></h1>
+<p class="linemarker linemarker-4">The inputs file should be a <code class="docutils literal notranslate"><span class="pre">YAML</span></code> or <code class="docutils literal notranslate"><span class="pre">.yml</span></code> file.</p>
+<p class="linemarker linemarker-6">There are two kinds (in terms of structure) of input files that this calculator recognizes. If you want to perform a single bolt analysis, the input file should look like <a class="reference internal" href="#single"><span class="std std-ref">this</span></a>. If you want to perform multiple bolting group analyses, or in other words, if you want to study multiple bolting patterns, you must first create a <a class="reference internal" href="#single"><span class="std std-ref">separate input file</span></a> for each bolting pattern. The paths to the bolting file can be organized in a single file like <a class="reference internal" href="#multiple"><span class="std std-ref">this</span></a> which the calculator will recognize. The inputs file must be in the same directory as <code class="docutils literal notranslate"><span class="pre">run.py</span></code> or the absolute path to the input file must be specified.</p>
+<section id="single-fastener-group-analysis-input-file">
+<h2>Single Fastener Group Analysis Input File<a class="headerlink" href="#single-fastener-group-analysis-input-file" title="Permalink to this heading">¶</a></h2>
+<section id="projectinformation">
+<h3>projectInformation<a class="headerlink" href="#projectinformation" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">output_dir</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-15"><cite>type</cite>: String.</p></li>
+<li><p class="linemarker linemarker-16"><cite>description</cite>: Output directory for the results. Results include a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file that contains the resulting structural parameters, an <code class="docutils literal notranslate"><span class="pre">.svg</span></code> figure of the bolts, and a <code class="docutils literal notranslate"><span class="pre">.html</span></code> file presenting the results.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">project_name</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-18"><cite>type</cite>: String.</p></li>
+<li><p class="linemarker linemarker-19"><cite>description</cite>: The name of the case(s)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">open_on_completion</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-21"><em>This option is only available for a single bolting group study.</em></p></li>
+<li><p class="linemarker linemarker-22"><cite>type</cite>: Boolean.</p></li>
+<li><p class="linemarker linemarker-23"><cite>description</cite>: Options include “True” or “False”. If “True”, the <code class="docutils literal notranslate"><span class="pre">.html</span></code> file will be opened on completion.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 <section id="frameofreference">
-<h2>frameofReference<a class="headerlink" href="#frameofreference" title="Permalink to this headline">¶</a></h2>
-<section id="patterncentroid">
-<h3>patternCentroid<a class="headerlink" href="#patterncentroid" title="Permalink to this headline">¶</a></h3>
-<p>Should include all the information for the centroid of the pattern. Should include the location of the centroid in format <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code> in the cartesian coordinate system. User should also specify the plane on which the bolt bottom head surface is flush with.</p>
-<a class="reference internal image-reference" href="_images/bolts_flush.svg"><img alt="_images/bolts_flush.svg" src="_images/bolts_flush.svg" /></a>
+<h3>frameofReference<a class="headerlink" href="#frameofreference" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">plane</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-30"><cite>type</cite>: String. Options include any pair of <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>.</p></li>
+<li><p class="linemarker linemarker-31"><cite>description</cite>: Plane on which the fastener bottom heads are flush with. <strong>The first character should be the axis in the longitudinal (right-left) direction, and the second should be the axis in the latitudinal (up-down) direction.</strong> For example, in the schematic below, said plane would the <code class="docutils literal notranslate"><span class="pre">xy</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code> is in the longitudinal direction and <code class="docutils literal notranslate"><span class="pre">y</span></code> is the latitudinal axis. In a 2D bolting pattern, the program will determine the plane automatically and error-check the end-user’s input plane. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="_images/bolts_flush.svg" src="_images/bolts_flush.svg" /></section>
+<section id="forces">
+<h3>forces<a class="headerlink" href="#forces" title="Permalink to this heading">¶</a></h3>
+<section id="force1">
+<h4>force1<a class="headerlink" href="#force1" title="Permalink to this heading">¶</a></h4>
+<p class="linemarker linemarker-40"><code class="docutils literal notranslate"><span class="pre">force1</span></code> is a list element. To make more forces, repeat the fields and syntax of this element.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">force</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-43"><cite>type</cite>: String</p></li>
+<li><p class="linemarker linemarker-44"><cite>description</cite>: Name of force.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">magnitude</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-46"><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
+<li><p class="linemarker linemarker-47"><cite>description</cite>: vector components of force. <strong>Units</strong>: [lbf]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">location</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-49"><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
+<li><p class="linemarker linemarker-50"><cite>description</cite>: Point location of force. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="fasteners">
+<h3>fasteners<a class="headerlink" href="#fasteners" title="Permalink to this heading">¶</a></h3>
+<section id="fastener1">
+<h4>fastener1<a class="headerlink" href="#fastener1" title="Permalink to this heading">¶</a></h4>
+<p class="linemarker linemarker-57"><code class="docutils literal notranslate"><span class="pre">fastener1</span></code> is a list element. To make more fasteners, repeat the fields and syntax of this element.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bolt</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-60"><cite>type</cite>: String</p></li>
+<li><p class="linemarker linemarker-61"><cite>description</cite>: Name of fastener</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">major_diameter</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-63"><cite>type</cite>: int, float</p></li>
+<li><p class="linemarker linemarker-64"><cite>description</cite>: nominal or major diameter of fastener. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tpi</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-66"><cite>type</cite>: int, float</p></li>
+<li><p class="linemarker linemarker-67"><cite>description</cite>: threads-per-inch of fastener. <strong>Units</strong>: [Dimensionless]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Sy</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-69"><cite>type</cite>: int, float</p></li>
+<li><p class="linemarker linemarker-70"><cite>description</cite>: yield strength of bolt material. <strong>Units</strong>: [Psi]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">location</span></code>:</dt><dd><ul>
+<li><p class="linemarker linemarker-72"><cite>type</cite>: List in format <code class="docutils literal notranslate"><span class="pre">[x,y,z]</span></code></p></li>
+<li><p class="linemarker linemarker-73"><cite>description</cite>: location of fastener. <strong>Units</strong>: [inches]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="single-fastener-group-analysis-inputs-file-example">
+<h3>Single Fastener Group Analysis Inputs File Example<a class="headerlink" href="#single-fastener-group-analysis-inputs-file-example" title="Permalink to this heading">¶</a></h3>
+<p class="linemarker linemarker-79" id="single">The name <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> is the default name for the inputs file, but this file name can be changed to anything. The <code class="docutils literal notranslate"><span class="pre">inputs.yml</span></code> file should be in the same directory as the <code class="docutils literal notranslate"><span class="pre">run.py</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectInformation</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/case/out&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">project_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;case1&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">open_on_completion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+
+<span class="nt">frameOfReference</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">plane</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;xy&#39;</span><span class="w"></span>
+
+<span class="nt">forces</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Force1&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">magnitude</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-400</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">-1.20</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Force2&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">magnitude</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-42000</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="nt">fasteners</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bolt</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1/4&quot;-14</span><span class="nv"> </span><span class="s">TPI</span><span class="nv"> </span><span class="s">bolt</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">edge&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">major_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tpi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Sy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-1.05</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bolt</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1/2&quot;-14</span><span class="nv"> </span><span class="s">TPI</span><span class="nv"> </span><span class="s">bolt</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">plate</span><span class="nv"> </span><span class="s">outside&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">major_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tpi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Sy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-0.035</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="multiple-fastener-group-analysis-input-file">
+<h2>Multiple Fastener Group Analysis Input File<a class="headerlink" href="#multiple-fastener-group-analysis-input-file" title="Permalink to this heading">¶</a></h2>
+<section id="id1">
+<h3>projectInformation<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">output_dir</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-124"><cite>type</cite>: String.</p></li>
+<li><p class="linemarker linemarker-125"><cite>description</cite>: Output directory for the results. Results include a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file that contains the resulting structural parameters, an <code class="docutils literal notranslate"><span class="pre">.svg</span></code> figure of the bolts, and an <code class="docutils literal notranslate"><span class="pre">.html</span></code> file presenting the results.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">project_name</span></code></dt><dd><ul>
+<li><p class="linemarker linemarker-127"><cite>type</cite>: String.</p></li>
+<li><p class="linemarker linemarker-128"><cite>description</cite>: The name of the case(s)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="files">
+<h3>files<a class="headerlink" href="#files" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p class="linemarker linemarker-133"><cite>type</cite>: List.</p></li>
+<li><p class="linemarker linemarker-134"><cite>description</cite>: A list of single bolting group analysis input files. See below for example.</p></li>
+</ul>
+</section>
+<section id="multiple-fastener-group-analysis-input-file-example">
+<h3>Multiple Fastener Group Analysis Input File Example<a class="headerlink" href="#multiple-fastener-group-analysis-input-file-example" title="Permalink to this heading">¶</a></h3>
+<p class="linemarker linemarker-141" id="multiple">The name <code class="docutils literal notranslate"><span class="pre">inputs_queue.yml</span></code> is the default name for the inputs file, but this file name can be changed to anything. All absolute path to the inputs files must be specified.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectInformation</span><span class="p">:</span><span class="w"></span>
+
+<span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/case/out/queue&#39;</span><span class="w"></span>
+<span class="nt">project_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;multiple_cases&#39;</span><span class="w"></span>
+
+<span class="nt">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs1.yml&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs2.yml&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs3.yml&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs4.yml&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs5.yml&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/usr/case/inputs6.yml&#39;</span><span class="w"></span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -62,8 +275,15 @@
 
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">boltStressCalculator Functions</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">inputs.yml (or the inputs YAML file)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#single-fastener-group-analysis-input-file">Single Fastener Group Analysis Input File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-fastener-group-analysis-input-file">Multiple Fastener Group Analysis Input File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1"><a class="reference internal" href="includeme.html">boltStressCalculator</a></li>
 </ul>
 
@@ -71,6 +291,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">boltStressCalculator Documentation</a></li>
+      <li>Next: <a href="functions.html" title="next chapter">Functions</a></li>
   </ul></li>
 </ul>
 </div>
@@ -83,7 +305,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -100,7 +322,7 @@
       &copy;2022, Austin Benny.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

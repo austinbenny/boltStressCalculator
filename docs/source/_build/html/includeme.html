@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>boltStressCalculator &#8212; boltStressCalculator v1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,10 +12,11 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="boltStressCalculator Functions" href="functions.html" />
+    <link rel="prev" title="Features for the future" href="todo.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,9 +34,9 @@
           <div class="body" role="main">
             
   <section id="boltstresscalculator">
-<h1>boltStressCalculator<a class="headerlink" href="#boltstresscalculator" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://austinbenny.github.io/boltStressCalculator/build/html/index.html">https://austinbenny.github.io/boltStressCalculator/build/html/index.html</a></p>
-<p>This is a calculator that takes as input forces, moments/couples, bolt locations from the user and outputs the stress, IR and other structural parameters for each bolt. The value add from a calculator like this is the end user has free rein on the type of bolting pattern to be analyzed as long as the centroid of the bolting pattern is specified. You could imagine analyst A attempting to find the IR on a 4 bolt pattern which could take about 2 hours or use this calculator and get reliable results in 5 minutes. The calculator also has an HTML interface for users to provide inputs. The outputs are written to either a csv file, a .tex file, or an HTML file.</p>
+<h1>boltStressCalculator<a class="headerlink" href="#boltstresscalculator" title="Permalink to this heading">¶</a></h1>
+<p class="linemarker linemarker-4"><a class="reference external" href="https://austinbenny.github.io/boltStressCalculator/build/html/index.html">https://austinbenny.github.io/boltStressCalculator/build/html/index.html</a></p>
+<p class="linemarker linemarker-6">This is a calculator that takes as input forces, moments/couples, bolt locations from the user and outputs the stress, IR and other structural parameters for each bolt. The value add from a calculator like this is the end user has free rein on the type of bolting pattern to be analyzed as long as the centroid of the bolting pattern is specified. You could imagine analyst A attempting to find the IR on a 4 bolt pattern which could take about 2 hours or use this calculator and get reliable results in 5 minutes. The calculator also has an HTML interface for users to provide inputs. The outputs are written to either a csv file, a .tex file, or an HTML file.</p>
 </section>
 
 
@@ -57,7 +58,10 @@
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="functions.html">boltStressCalculator Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputs_file.html">inputs.yml (or the inputs YAML file)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Features for the future</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">boltStressCalculator</a></li>
 </ul>
 
@@ -65,7 +69,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="functions.html" title="previous chapter">boltStressCalculator Functions</a></li>
+      <li>Previous: <a href="todo.html" title="previous chapter">Features for the future</a></li>
   </ul></li>
 </ul>
 </div>
@@ -78,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -95,7 +99,7 @@
       &copy;2022, Austin Benny.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
